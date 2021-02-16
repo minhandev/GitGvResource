@@ -1,4 +1,5 @@
 ﻿using Data.Entity;
+using Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace Data.BaseRepository
 {
-    public class UnitOfWork<T> : IUnitOfWork<T> where T : class, IEntity
+    public class UnitOfWork : IUnitOfWork 
     {
         private readonly GvResourceContext context;
         public UnitOfWork(GvResourceContext context)
         {
             this.context = context;
-            Repository = new Repository<T>(context);
-
+            Employee = new Repository<Employee>(context);
         }
-        public IRepository<T> Repository { get; }
+        public IRepository<Employee> Employee { get; }
 
         public async Task Commit()
         {

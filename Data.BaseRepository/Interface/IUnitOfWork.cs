@@ -1,12 +1,13 @@
 ﻿using Data.Entity;
+using Data.Model;
 using System;
 using System.Threading.Tasks;
 
 namespace Data.BaseRepository
 {
-    public interface IUnitOfWork<T> : IDisposable where T : class, IEntity
+    public interface IUnitOfWork : IDisposable 
     {
-        IRepository<T> Repository { get; }
+        IRepository<Employee> Employee { get; }
         Task Commit();
     }
 }

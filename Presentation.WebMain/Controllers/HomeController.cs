@@ -13,16 +13,16 @@ namespace Presentation.WebMain.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IUnitOfWork<Employee> unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
-        public HomeController(IUnitOfWork<Employee> unitOfWork)
+        public HomeController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
 
         public async Task<IActionResult> Index()
         {
-            var list = await unitOfWork.Repository.All();
+            var list = await unitOfWork.Employee.All();
             return View(list);
         }
     }

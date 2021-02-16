@@ -11,7 +11,7 @@ namespace Infrastructure.Utilities
         public static IServiceCollection AddEntityFramework(this IServiceCollection services, string connectionString, string Project)
         {
             services.AddDbContext<GvResourceContext>(options => options.UseSqlServer(connectionString, x => x.MigrationsAssembly(Project)));
-            services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             return services;
         }
