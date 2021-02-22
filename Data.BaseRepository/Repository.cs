@@ -11,11 +11,19 @@ namespace Data.BaseRepository
 {
     public class Repository<T> : IRepository<T> where T : class, IEntity
     {
+        private DbContext context;
+        private readonly IUnitOfWork IUnitOfWork;
         DbSet<T> Table { get; set; }
         public Repository(GvResourceContext context)
         {
             Table = context.Set<T>();
         }
+
+        public Repository(DbContext context)
+        {
+            this.context = context;
+        }
+
         public async Task Add(T entity)
         {
             await Table.AddAsync(entity);

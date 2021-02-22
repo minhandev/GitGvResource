@@ -6,24 +6,24 @@ using System.Text;
 
 namespace Data.Entity
 {
-    public class GvResourceContext : DbContext
+     public class GvResourceContext : DbContext
     {
         public GvResourceContext(DbContextOptions<GvResourceContext> options)
             : base(options)
         {
         }
-        public DbSet<MerchandiseGroup> MerchandiseGroups { get; set; }
-        public DbSet<Merchandise> Merchandises { get; set; }
-        public DbSet<ExportBillDetail> ExportBillDetails { get; set; }
-        public DbSet<ImportBillDetail> ImportBillDetails { get; set; }
-        public DbSet<ShipmentLocation> ShipmentLocations { get; set; }
-        public DbSet<Supplier> Suppliers { get; set; }
-        public DbSet<ExportBill> ExportBills { get; set; }
-        public DbSet<ImportBill> ImportBills { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-        //public DbSet<Receipt> Receipt { get; set; }
-        public DbSet<StoreHouse> StoreHouses { get; set; }
-        public DbSet<Shipment> Shipments { get; set; }
+         DbSet<MerchandiseGroup> MerchandiseGroups { get; set; }
+         DbSet<Merchandise> Merchandises { get; set; }
+         DbSet<ExportBillDetail> ExportBillDetails { get; set; }
+         DbSet<ImportBillDetail> ImportBillDetails { get; set; }
+         DbSet<ShipmentLocation> ShipmentLocations { get; set; }
+         DbSet<Supplier> Suppliers { get; set; }
+         DbSet<ExportBill> ExportBills { get; set; }
+         DbSet<ImportBill> ImportBills { get; set; }
+         DbSet<Employee> Employees { get; set; }
+        // DbSet<Receipt> Receipt { get; set; }
+         DbSet<StoreHouse> StoreHouses { get; set; }
+         DbSet<Shipment> Shipments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

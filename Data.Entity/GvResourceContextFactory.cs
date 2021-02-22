@@ -11,7 +11,7 @@ namespace Data.Entity
         public GvResourceContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<GvResourceContext>();
-            optionsBuilder.UseSqlServer("Data Source=ANDEV\\SQLEXPRESS01;Initial Catalog=GvResourceProDB;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS01;Initial Catalog=GvResourceProDB;Integrated Security=True");
 
             return new GvResourceContext(optionsBuilder.Options);
         }

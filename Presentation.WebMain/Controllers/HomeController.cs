@@ -19,10 +19,9 @@ namespace Presentation.WebMain.Controllers
         {
             this.unitOfWork = unitOfWork;
         }
-
         public async Task<IActionResult> Index()
         {
-            var list = await unitOfWork.Employee.All();
+            var list = await unitOfWork.Employee.GetById(Guid.Parse("5E4DE440-C3E1-474E-BDFC-0321CB1DA054"));
             return View(list);
         }
     }

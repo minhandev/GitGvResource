@@ -1,8 +1,11 @@
 ﻿using Data.BaseRepository;
 using Data.Entity;
+using Data.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Utilities
 {
@@ -19,6 +22,11 @@ namespace Infrastructure.Utilities
         public static string GetNameProject()
         {
             return System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
+        }
+
+        public async Task<List<Employee>> GetList()
+        {
+           var x =  unitOfWork.Employee.All();
         }
     }
 }
