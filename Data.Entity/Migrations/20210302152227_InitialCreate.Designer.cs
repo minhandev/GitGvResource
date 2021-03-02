@@ -10,16 +10,16 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Entity.Migrations
 {
     [DbContext(typeof(GvResourceContext))]
-    [Migration("20210212071725_InitialCreate")]
+    [Migration("20210302152227_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.1");
+                .HasAnnotation("ProductVersion", "5.0.3")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Data.Model.Employee", b =>
                 {
@@ -66,7 +66,7 @@ namespace Data.Entity.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employee");
                 });
 
             modelBuilder.Entity("Data.Model.ExportBill", b =>
@@ -110,7 +110,7 @@ namespace Data.Entity.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("ExportBills");
+                    b.ToTable("ExportBill");
                 });
 
             modelBuilder.Entity("Data.Model.ExportBillDetail", b =>
@@ -168,7 +168,7 @@ namespace Data.Entity.Migrations
 
                     b.HasIndex("ShipmentID");
 
-                    b.ToTable("ExportBillDetails");
+                    b.ToTable("ExportBillDetail");
                 });
 
             modelBuilder.Entity("Data.Model.ImportBill", b =>
@@ -212,7 +212,7 @@ namespace Data.Entity.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("ImportBills");
+                    b.ToTable("ImportBill");
                 });
 
             modelBuilder.Entity("Data.Model.ImportBillDetail", b =>
@@ -265,7 +265,7 @@ namespace Data.Entity.Migrations
 
                     b.HasIndex("ImportBillID");
 
-                    b.ToTable("ImportBillDetails");
+                    b.ToTable("ImportBillDetail");
                 });
 
             modelBuilder.Entity("Data.Model.Merchandise", b =>
@@ -318,7 +318,7 @@ namespace Data.Entity.Migrations
 
                     b.HasIndex("MerchandiseGroupID");
 
-                    b.ToTable("Merchandises");
+                    b.ToTable("Merchandise");
                 });
 
             modelBuilder.Entity("Data.Model.MerchandiseGroup", b =>
@@ -360,7 +360,7 @@ namespace Data.Entity.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("MerchandiseGroups");
+                    b.ToTable("MerchandiseGroup");
                 });
 
             modelBuilder.Entity("Data.Model.Shipment", b =>
@@ -430,7 +430,7 @@ namespace Data.Entity.Migrations
 
                     b.HasIndex("SupplierID");
 
-                    b.ToTable("Shipments");
+                    b.ToTable("Shipment");
                 });
 
             modelBuilder.Entity("Data.Model.ShipmentLocation", b =>
@@ -475,7 +475,7 @@ namespace Data.Entity.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("ShipmentLocations");
+                    b.ToTable("ShipmentLocation");
                 });
 
             modelBuilder.Entity("Data.Model.StoreHouse", b =>
@@ -508,7 +508,7 @@ namespace Data.Entity.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("StoreHouses");
+                    b.ToTable("StoreHouse");
                 });
 
             modelBuilder.Entity("Data.Model.Supplier", b =>
@@ -556,7 +556,7 @@ namespace Data.Entity.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Suppliers");
+                    b.ToTable("Supplier");
                 });
 
             modelBuilder.Entity("Data.Model.ExportBill", b =>

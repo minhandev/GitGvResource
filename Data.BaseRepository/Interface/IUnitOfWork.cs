@@ -1,5 +1,6 @@
 ﻿using Data.Entity;
 using Data.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
@@ -18,6 +19,5 @@ namespace Data.BaseRepository
         IRepository<ImportBill> ImportBill { get; }
         IRepository<StoreHouse> StoreHouse { get; }
         IRepository<Shipment> Shipment { get; }
-        Task Commit();
     }
 }

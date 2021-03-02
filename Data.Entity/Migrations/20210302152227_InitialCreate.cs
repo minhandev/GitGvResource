@@ -8,7 +8,7 @@ namespace Data.Entity.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Employees",
+                name: "Employee",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
@@ -27,11 +27,11 @@ namespace Data.Entity.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.ID);
+                    table.PrimaryKey("PK_Employee", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MerchandiseGroups",
+                name: "MerchandiseGroup",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
@@ -48,11 +48,11 @@ namespace Data.Entity.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MerchandiseGroups", x => x.ID);
+                    table.PrimaryKey("PK_MerchandiseGroup", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ShipmentLocations",
+                name: "ShipmentLocation",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
@@ -70,11 +70,11 @@ namespace Data.Entity.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ShipmentLocations", x => x.ID);
+                    table.PrimaryKey("PK_ShipmentLocation", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "StoreHouses",
+                name: "StoreHouse",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
@@ -88,11 +88,11 @@ namespace Data.Entity.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StoreHouses", x => x.ID);
+                    table.PrimaryKey("PK_StoreHouse", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Suppliers",
+                name: "Supplier",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
@@ -111,11 +111,11 @@ namespace Data.Entity.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Suppliers", x => x.ID);
+                    table.PrimaryKey("PK_Supplier", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExportBills",
+                name: "ExportBill",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
@@ -132,17 +132,17 @@ namespace Data.Entity.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExportBills", x => x.ID);
+                    table.PrimaryKey("PK_ExportBill", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ExportBills_Employees_EmployeeID",
+                        name: "FK_ExportBill_Employee_EmployeeID",
                         column: x => x.EmployeeID,
-                        principalTable: "Employees",
+                        principalTable: "Employee",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ImportBills",
+                name: "ImportBill",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
@@ -159,17 +159,17 @@ namespace Data.Entity.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ImportBills", x => x.ID);
+                    table.PrimaryKey("PK_ImportBill", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ImportBills_Employees_EmployeeID",
+                        name: "FK_ImportBill_Employee_EmployeeID",
                         column: x => x.EmployeeID,
-                        principalTable: "Employees",
+                        principalTable: "Employee",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Merchandises",
+                name: "Merchandise",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
@@ -189,17 +189,17 @@ namespace Data.Entity.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Merchandises", x => x.ID);
+                    table.PrimaryKey("PK_Merchandise", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Merchandises_MerchandiseGroups_MerchandiseGroupID",
+                        name: "FK_Merchandise_MerchandiseGroup_MerchandiseGroupID",
                         column: x => x.MerchandiseGroupID,
-                        principalTable: "MerchandiseGroups",
+                        principalTable: "MerchandiseGroup",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ImportBillDetails",
+                name: "ImportBillDetail",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
@@ -219,17 +219,17 @@ namespace Data.Entity.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ImportBillDetails", x => x.ID);
+                    table.PrimaryKey("PK_ImportBillDetail", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ImportBillDetails_ImportBills_ImportBillID",
+                        name: "FK_ImportBillDetail_ImportBill_ImportBillID",
                         column: x => x.ImportBillID,
-                        principalTable: "ImportBills",
+                        principalTable: "ImportBill",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Shipments",
+                name: "Shipment",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
@@ -252,41 +252,41 @@ namespace Data.Entity.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Shipments", x => x.ID);
+                    table.PrimaryKey("PK_Shipment", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Shipments_ImportBillDetails_ImportBillDetailsID",
+                        name: "FK_Shipment_ImportBillDetail_ImportBillDetailsID",
                         column: x => x.ImportBillDetailsID,
-                        principalTable: "ImportBillDetails",
+                        principalTable: "ImportBillDetail",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Shipments_Merchandises_MerchandiseID",
+                        name: "FK_Shipment_Merchandise_MerchandiseID",
                         column: x => x.MerchandiseID,
-                        principalTable: "Merchandises",
+                        principalTable: "Merchandise",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Shipments_ShipmentLocations_ShipmentLocationID",
+                        name: "FK_Shipment_ShipmentLocation_ShipmentLocationID",
                         column: x => x.ShipmentLocationID,
-                        principalTable: "ShipmentLocations",
+                        principalTable: "ShipmentLocation",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Shipments_StoreHouses_StoreHouseID",
+                        name: "FK_Shipment_StoreHouse_StoreHouseID",
                         column: x => x.StoreHouseID,
-                        principalTable: "StoreHouses",
+                        principalTable: "StoreHouse",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Shipments_Suppliers_SupplierID",
+                        name: "FK_Shipment_Supplier_SupplierID",
                         column: x => x.SupplierID,
-                        principalTable: "Suppliers",
+                        principalTable: "Supplier",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExportBillDetails",
+                name: "ExportBillDetail",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
@@ -307,111 +307,111 @@ namespace Data.Entity.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExportBillDetails", x => x.ID);
+                    table.PrimaryKey("PK_ExportBillDetail", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ExportBillDetails_ExportBills_ExportBillID",
+                        name: "FK_ExportBillDetail_ExportBill_ExportBillID",
                         column: x => x.ExportBillID,
-                        principalTable: "ExportBills",
+                        principalTable: "ExportBill",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ExportBillDetails_Shipments_ShipmentID",
+                        name: "FK_ExportBillDetail_Shipment_ShipmentID",
                         column: x => x.ShipmentID,
-                        principalTable: "Shipments",
+                        principalTable: "Shipment",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExportBillDetails_ExportBillID",
-                table: "ExportBillDetails",
+                name: "IX_ExportBill_EmployeeID",
+                table: "ExportBill",
+                column: "EmployeeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ExportBillDetail_ExportBillID",
+                table: "ExportBillDetail",
                 column: "ExportBillID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExportBillDetails_ShipmentID",
-                table: "ExportBillDetails",
+                name: "IX_ExportBillDetail_ShipmentID",
+                table: "ExportBillDetail",
                 column: "ShipmentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExportBills_EmployeeID",
-                table: "ExportBills",
+                name: "IX_ImportBill_EmployeeID",
+                table: "ImportBill",
                 column: "EmployeeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ImportBillDetails_ImportBillID",
-                table: "ImportBillDetails",
+                name: "IX_ImportBillDetail_ImportBillID",
+                table: "ImportBillDetail",
                 column: "ImportBillID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ImportBills_EmployeeID",
-                table: "ImportBills",
-                column: "EmployeeID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Merchandises_MerchandiseGroupID",
-                table: "Merchandises",
+                name: "IX_Merchandise_MerchandiseGroupID",
+                table: "Merchandise",
                 column: "MerchandiseGroupID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shipments_ImportBillDetailsID",
-                table: "Shipments",
+                name: "IX_Shipment_ImportBillDetailsID",
+                table: "Shipment",
                 column: "ImportBillDetailsID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shipments_MerchandiseID",
-                table: "Shipments",
+                name: "IX_Shipment_MerchandiseID",
+                table: "Shipment",
                 column: "MerchandiseID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shipments_ShipmentLocationID",
-                table: "Shipments",
+                name: "IX_Shipment_ShipmentLocationID",
+                table: "Shipment",
                 column: "ShipmentLocationID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shipments_StoreHouseID",
-                table: "Shipments",
+                name: "IX_Shipment_StoreHouseID",
+                table: "Shipment",
                 column: "StoreHouseID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shipments_SupplierID",
-                table: "Shipments",
+                name: "IX_Shipment_SupplierID",
+                table: "Shipment",
                 column: "SupplierID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ExportBillDetails");
+                name: "ExportBillDetail");
 
             migrationBuilder.DropTable(
-                name: "ExportBills");
+                name: "ExportBill");
 
             migrationBuilder.DropTable(
-                name: "Shipments");
+                name: "Shipment");
 
             migrationBuilder.DropTable(
-                name: "ImportBillDetails");
+                name: "ImportBillDetail");
 
             migrationBuilder.DropTable(
-                name: "Merchandises");
+                name: "Merchandise");
 
             migrationBuilder.DropTable(
-                name: "ShipmentLocations");
+                name: "ShipmentLocation");
 
             migrationBuilder.DropTable(
-                name: "StoreHouses");
+                name: "StoreHouse");
 
             migrationBuilder.DropTable(
-                name: "Suppliers");
+                name: "Supplier");
 
             migrationBuilder.DropTable(
-                name: "ImportBills");
+                name: "ImportBill");
 
             migrationBuilder.DropTable(
-                name: "MerchandiseGroups");
+                name: "MerchandiseGroup");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "Employee");
         }
     }
 }

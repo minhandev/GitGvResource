@@ -1,4 +1,5 @@
 ﻿using Data.BaseRepository;
+using Data.Entity;
 using Data.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,16 +14,14 @@ namespace Presentation.WebMain.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IUnitOfWork unitOfWork;
-
-        public HomeController(IUnitOfWork unitOfWork)
+         public async Task<IActionResult> Index()
         {
-            this.unitOfWork = unitOfWork;
-        }
-        public async Task<IActionResult> Index()
-        {
-            var list = await unitOfWork.Employee.GetById(Guid.Parse("5E4DE440-C3E1-474E-BDFC-0321CB1DA054"));
-            return View(list);
+            using(var context = new GvResourceContext())
+            {
+                var unit = new UnitOfWork(context);
+                var list = await unit.Employee.All();
+                return View(list);
+            }
         }
     }
 }

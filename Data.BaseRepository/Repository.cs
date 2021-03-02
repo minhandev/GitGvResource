@@ -14,14 +14,9 @@ namespace Data.BaseRepository
         private DbContext context;
         private readonly IUnitOfWork IUnitOfWork;
         DbSet<T> Table { get; set; }
-        public Repository(GvResourceContext context)
-        {
-            Table = context.Set<T>();
-        }
-
         public Repository(DbContext context)
         {
-            this.context = context;
+            Table = context.Set<T>();
         }
 
         public async Task Add(T entity)

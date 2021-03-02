@@ -10,11 +10,11 @@ namespace Data.BaseRepository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly GvResourceContext context;
+        private readonly DbContext context;
         private IUnitOfWork unitOfWork;
-        public UnitOfWork(GvResourceContext context)
+        public UnitOfWork(GvResourceContext _context)
         {
-            this.context = context;
+            context = _context;
             #region Phân vùng IRepository theo Context
             Employee = new Repository<Employee>(context);
             MerchandiseGroup = new Repository<MerchandiseGroup>(context);
