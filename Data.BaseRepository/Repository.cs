@@ -9,59 +9,57 @@ using System.Threading.Tasks;
 
 namespace Data.BaseRepository
 {
-    public class Repository<T> : IRepository<T> where T : class, IEntity
+    public class Repository<T> : IRepository<T> where T : class
     {
-        private DbContext context;
-        private readonly IUnitOfWork IUnitOfWork;
         DbSet<T> Table { get; set; }
         public Repository(DbContext context)
         {
             Table = context.Set<T>();
         }
 
-        public async Task Add(T entity)
+        public T Get(int id)
         {
-            await Table.AddAsync(entity);
+            return Table.Find(id);
         }
 
-        public async Task Add(IEnumerable<T> entities)
+        public IEnumerable<T> GetAll()
         {
-            await Table.AddRangeAsync(entities);
+            return Table.ToList();
         }
 
-        public async Task<IList<T>> All()
+        public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
         {
-            return await Table.AsNoTracking().ToListAsync();
+            return Table.Where(predicate);
         }
 
-        public void Delete(T entity)
+        public T SingleOrDefault(Expression<Func<T, bool>> predicate)
+        {
+            return Table.SingleOrDefault(predicate);
+        }
+
+        public void Add(T entity)
+        {
+            Table.Add(entity);
+        }
+
+        public void AddRange(IList<T> entities)
+        {
+            Table.AddRange(entities);
+        }
+
+        public void Remove(T entity)
         {
             Table.Remove(entity);
         }
 
-        public void Delete(IEnumerable<T> entities)
+        public void RemoveRange(IEnumerable<T> entities)
         {
             Table.RemoveRange(entities);
         }
 
-        public async Task<T> GetById(Guid? ID)
+        public IList<T> GetList()
         {
-            return await Table.SingleAsync(x => x.ID == ID);
-        }
-
-        public void Update(T entity)
-        {
-            Table.Update(entity);
-        }
-
-        public async void Update(IEnumerable<T> entities)
-        {
-            Table.UpdateRange();
-        }
-
-        public IQueryable<T> Where(Expression<Func<T, bool>> expression)
-        {
-            return Table.Where<T>(expression);
+            return Table.ToList();
         }
     }
 }
