@@ -3,6 +3,8 @@ using Data.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,8 +12,8 @@ namespace Data.BaseRepository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DbContext context;
-        private IUnitOfWork unitOfWork;
+        public DbContext context { get; internal set; }
+
         public UnitOfWork(GvResourceContext _context)
         {
             context = _context;
@@ -27,14 +29,19 @@ namespace Data.BaseRepository
         public IRepository<Match> Match { get; }
         #endregion
 
-        public async Task Commit()
+        public void Commit()
         {
-            await context.SaveChangesAsync();
+             context.SaveChanges();
         }
 
         public void Dispose()
         {
             context.Dispose();
+        }
+
+        public IQueryable<TEntity> Queryable<TEntity>() where TEntity : class
+        {
+            return context.Set<TEntity>().AsQueryable();
         }
     }
 }

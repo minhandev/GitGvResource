@@ -11,8 +11,6 @@ namespace Data.BaseRepository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private DbContext context;
-        private readonly IUnitOfWork IUnitOfWork;
         DbSet<T> Table { get; set; }
         public Repository(DbContext context)
         {
