@@ -1,5 +1,5 @@
 ﻿using Data.Entity;
-using Data.Model;
+using Data.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,31 +16,15 @@ namespace Data.BaseRepository
         {
             context = _context;
             #region Phân vùng IRepository theo Context
-            Employee = new Repository<Employee>(context);
-            MerchandiseGroup = new Repository<MerchandiseGroup>(context);
-            Merchandise = new Repository<Merchandise>(context);
-            ExportBillDetail = new Repository<ExportBillDetail>(context);
-            ShipmentLocation = new Repository<ShipmentLocation>(context);
-            Supplier = new Repository<Supplier>(context);
-            ExportBill = new Repository<ExportBill>(context);
-            ImportBill = new Repository<ImportBill>(context);
-            StoreHouse = new Repository<StoreHouse>(context);
-            Shipment = new Repository<Shipment>(context);
+            Team = new Repository<Team>(context);
+
+            Match = new Repository<Match>(context);
             #endregion
         }
 
         #region Phân vùng IRepository theo Model
-        public IRepository<Employee> Employee { get; }
-        public IRepository<MerchandiseGroup> MerchandiseGroup { get; }
-        public IRepository<Merchandise> Merchandise { get; }
-        public IRepository<ExportBillDetail> ExportBillDetail { get; }
-        public IRepository<ImportBillDetail> ImportBillDetail { get; }
-        public IRepository<ShipmentLocation> ShipmentLocation { get; }
-        public IRepository<Supplier> Supplier { get; }
-        public IRepository<ExportBill> ExportBill { get; }
-        public IRepository<ImportBill> ImportBill { get; }
-        public IRepository<StoreHouse> StoreHouse { get; }
-        public IRepository<Shipment> Shipment { get; }
+        public IRepository<Team> Team { get; }
+        public IRepository<Match> Match { get; }
         #endregion
 
         public async Task Commit()

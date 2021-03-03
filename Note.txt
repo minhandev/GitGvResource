@@ -1,0 +1,2 @@
+SQL Create ef 
+Scaffold-Dbcontext "Server=.\sqlexpress;Database=DBTest;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context GvResourceContext -force 

@@ -1,6 +1,6 @@
-﻿using Data.BaseRepository;
-using Data.Entity;
-using Data.Model;
+﻿using Business.Serveices;
+using Data.BaseRepository;
+using Data.Entity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Presentation.WebMain.Models;
@@ -14,14 +14,10 @@ namespace Presentation.WebMain.Controllers
 {
     public class HomeController : Controller
     {
-         public async Task<IActionResult> Index()
+         public IActionResult Index()
         {
-            using(var context = new GvResourceContext())
-            {
-                var unit = new UnitOfWork(context);
-                var list = await unit.Employee.All();
-                return View(list);
-            }
+          var baseServeices = new  BaseServeices();
+            return View(baseServeices.GetTeams());
         }
     }
 }

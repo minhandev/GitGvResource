@@ -1,12 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@using Data.Model
-@model IEnumerable<Employee>
+@using Data.Entity.Models
+@model IEnumerable<Team>
 
 @foreach (var item in Model)
 {
-    <h1>@item.EmployeeCode</h1>
-    <h2>@item.EmployeeName</h2>
+    <h1>@item.Id</h1>
+    <h2>@item.Name</h2>
 
 }

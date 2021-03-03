@@ -8,17 +8,16 @@ using System.Threading.Tasks;
 
 namespace Data.BaseRepository
 {
-    public interface IRepository<T> where T : class, IEntity
+    public interface IRepository<T> where T : class
     {
-        Task Add(T entity);
-        Task Add(IEnumerable<T> entities);
-        void Update(T entity);
-        void Update(IEnumerable<T> entities);
-        void Delete(T entity);
-        void Delete(IEnumerable<T> entities);
-        Task<IList<T>> All();
-        Task<T> GetById(Guid? Id);
-
-        IQueryable<T> Where(Expression<Func<T, bool>> expression);
+        T Get(int id);
+        IEnumerable<T> GetAll();
+        IList<T> GetList();
+        IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
+        T SingleOrDefault(Expression<Func<T, bool>> predicate);
+        void Add(T entity);
+        void AddRange(IList<T> entities);
+        void Remove(T entity);
+        void RemoveRange(IEnumerable<T> entities);
     }
 }

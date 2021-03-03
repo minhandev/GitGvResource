@@ -1,5 +1,6 @@
 using Data.BaseRepository;
 using Data.Entity;
+using Data.Entity.Models;
 using Infrastructure.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
