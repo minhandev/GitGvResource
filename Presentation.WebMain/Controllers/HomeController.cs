@@ -17,7 +17,7 @@ namespace Presentation.WebMain.Controllers
          public IActionResult Index()
         {
           var baseServeices = new  BaseServeices();
-            return View(baseServeices.GetTeams());
+            return View();
         }
     }
 }

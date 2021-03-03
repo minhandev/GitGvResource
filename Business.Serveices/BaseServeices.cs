@@ -15,15 +15,5 @@ namespace Business.Serveices
 
         }
 
-        public List<Team> GetTeams()
-        {
-            using (var UnitOfWork = (IUnitOfWork)(new UnitOfWork( new GvResourceContext())))
-            {
-                // return new List<Team>(UnitOfWork.Team.GetList());
-
-                var lst = UnitOfWork.Queryable<Team>().Where(s => s.Id == 1).ToList();
-                return lst;
-            }
-        }
     }
 }
